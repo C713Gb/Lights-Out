@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "753744701490",
+    "firebase_url": "https://coding-faction.firebaseio.com",
+    "project_id": "coding-faction",
+    "storage_bucket": "coding-faction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753744701490:android:fa36f674781180b193f42b",
+        "android_client_info": {
+          "package_name": "com.example.codingfaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753744701490-sfrafr1pciuhn690ccok35vcc23baing.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.codingfaction",
+            "certificate_hash": "da2f5cbe9eeba75590987be9d6843713d555b4b4"
+          }
+        },
+        {
+          "client_id": "753744701490-1d55l4jh1r6gl3j67cou7riqfgssokgn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgZED8uqNacFRqXcEV7a2jQL2WApeWTu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753744701490-1d55l4jh1r6gl3j67cou7riqfgssokgn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
