@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,18 +31,14 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox checkBox;
     private int lightBulb1 = 0, lightBulb2 = 0, lightBulb3 = 0;
     private Button completedBtn;
+    private ImageView firstLightOn, firstLightOff, secondLightOn, secondLightOff, thirdLightOn, thirdLightOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        aSwitch = findViewById(R.id.switchBtn1);
-        bSwitch = findViewById(R.id.switchBtn2);
-        cSwitch = findViewById(R.id.switchBtn3);
-        allSwitch = findViewById(R.id.switchBtnAll);
-        checkBox = findViewById(R.id.allLightsCheckBox);
-        completedBtn = findViewById(R.id.completedBtn);
+        init();
 
         if (!checkBox.isChecked()) {
             allSwitch.setClickable(false);
@@ -83,8 +81,12 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     lightBulb1 = 1;
+                    firstLightOn.setVisibility(View.VISIBLE);
+                    firstLightOff.setVisibility(View.GONE);
                 } else {
                     lightBulb1 = 0;
+                    firstLightOff.setVisibility(View.VISIBLE);
+                    firstLightOn.setVisibility(View.GONE);
                 }
             }
         });
@@ -94,8 +96,12 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     lightBulb2 = 1;
+                    secondLightOn.setVisibility(View.VISIBLE);
+                    secondLightOff.setVisibility(View.GONE);
                 } else {
                     lightBulb2 = 0;
+                    secondLightOff.setVisibility(View.VISIBLE);
+                    secondLightOn.setVisibility(View.GONE);
                 }
             }
         });
@@ -105,11 +111,30 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     lightBulb3 = 1;
+                    thirdLightOn.setVisibility(View.VISIBLE);
+                    thirdLightOff.setVisibility(View.GONE);
                 } else {
                     lightBulb3 = 0;
+                    thirdLightOff.setVisibility(View.VISIBLE);
+                    thirdLightOn.setVisibility(View.GONE);
                 }
             }
         });
+    }
+
+    private void init() {
+        aSwitch = findViewById(R.id.switchBtn1);
+        bSwitch = findViewById(R.id.switchBtn2);
+        cSwitch = findViewById(R.id.switchBtn3);
+        allSwitch = findViewById(R.id.switchBtnAll);
+        checkBox = findViewById(R.id.allLightsCheckBox);
+        completedBtn = findViewById(R.id.completedBtn);
+        firstLightOn = findViewById(R.id.firstLightOn);
+        secondLightOn = findViewById(R.id.secondLightOn);
+        thirdLightOn = findViewById(R.id.thirdLightOn);
+        firstLightOff = findViewById(R.id.firstLightOff);
+        secondLightOff = findViewById(R.id.secondLightOff);
+        thirdLightOff = findViewById(R.id.thirdLightOff);
     }
 
     private void refresh(int milliseconds) {
@@ -172,6 +197,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateDatabase() {
 
+        boolean checknet = isOnline();
+        if (!checknet) {
+            Toast.makeText(this, "No Internet Connection available! ", Toast.LENGTH_SHORT).show();
+        }
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Lights");
 
         HashMap<String, Object> hashMap = new HashMap<>();
@@ -185,11 +215,23 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Toast.makeText(MainActivity.this, "Updated", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(MainActivity.this, "Something went wrong! Please check your Internet connection", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+    }
+
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException | InterruptedException e)          { e.printStackTrace(); }
+
+        return false;
     }
 
     private void turnAllSwitchesOff() {

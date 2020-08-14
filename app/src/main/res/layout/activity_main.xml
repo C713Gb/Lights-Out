@@ -82,9 +82,17 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/firstLightOn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/rsz_lightbulb"/>
+                android:src="@drawable/rsz_lighton"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/firstLightOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rsz_lightoff"/>
 
             <Switch
                 android:id="@+id/switchBtn1"
@@ -103,9 +111,17 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/secondLightOn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/rsz_lightbulb"/>
+                android:src="@drawable/rsz_lighton"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/secondLightOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rsz_lightoff"/>
 
             <Switch
                 android:id="@+id/switchBtn2"
@@ -124,9 +140,17 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/thirdLightOn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/rsz_lightbulb"/>
+                android:src="@drawable/rsz_lighton"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/thirdLightOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rsz_lightoff"/>
 
             <Switch
                 android:id="@+id/switchBtn3"
