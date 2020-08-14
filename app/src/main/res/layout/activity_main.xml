@@ -186,7 +186,10 @@
                     android:id="@+id/completedBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Update"/>
+                    android:text="Update"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:background="@drawable/updatebutton"/>
 
             </LinearLayout>
 
