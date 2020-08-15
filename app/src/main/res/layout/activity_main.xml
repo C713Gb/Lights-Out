@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe"
@@ -15,29 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/blue"
-                android:layout_alignParentTop="true"
-                android:elevation="5dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Lights Out"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:textSize="20sp"/>
-
-            </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/allControlLayout"
-                android:layout_below="@+id/toolbar"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -56,6 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="All Lights"
+                        android:textSize="20sp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"/>
 
@@ -109,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingEnd="20dp"/>
+                        android:paddingEnd="30dp"/>
 
                 </LinearLayout>
 
@@ -138,7 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingEnd="20dp"/>
+                        android:paddingEnd="30dp"/>
 
                 </LinearLayout>
 
@@ -167,7 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingEnd="20dp"/>
+                        android:paddingEnd="30dp"/>
 
                 </LinearLayout>
 
@@ -186,10 +173,17 @@
                     android:id="@+id/completedBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Update"
+                    android:text="Power"
+                    android:textSize="18sp"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:background="@drawable/updatebutton"/>
+                    android:textColor="@color/black"
+                    android:background="@drawable/updatebutton"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="5dp"/>
 
             </LinearLayout>
 
@@ -198,4 +192,4 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

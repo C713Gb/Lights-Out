@@ -2,17 +2,25 @@ package com.example.codingfaction;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView firstLightOn, firstLightOff, secondLightOn, secondLightOff, thirdLightOn, thirdLightOff;
     private FirebaseAuth mAuth;
     private SwipeRefreshLayout refreshLayout;
+    private Dialog logoutDialog;
 
     @Override
     protected void onStart() {
@@ -52,11 +61,63 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logoutItem:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    private void logout() {
+        final TextView yes, no;
+        logoutDialog.setContentView(R.layout.logoutpopup);
+        yes = logoutDialog.findViewById(R.id.yesLogout);
+        no = logoutDialog.findViewById(R.id.noLogout);
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                no.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                no.setTextColor(Color.parseColor("#2F333F"));
+                logoutDialog.dismiss();
+            }
+        });
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                yes.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                yes.setTextColor(Color.parseColor("#2F333F"));
+                logoutDialog.dismiss();
+                mAuth.signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            }
+        });
+        logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        logoutDialog.show();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         mAuth = FirebaseAuth.getInstance();
+
+        logoutDialog = new Dialog(this);
 
         init();
 
