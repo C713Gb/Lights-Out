@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference, reference;
     private CheckBox checkBox;
     private int lightBulb1 = 0, lightBulb2 = 0, lightBulb3 = 0;
-    private Button completedBtn;
+    private Button completedBtn, testBtn;
     private ImageView firstLightOn, firstLightOff, secondLightOn, secondLightOff, thirdLightOn, thirdLightOff;
     private FirebaseAuth mAuth;
     private SwipeRefreshLayout refreshLayout;
@@ -129,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateDatabase();
+            }
+        });
+
+        testBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
             }
         });
 
@@ -223,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
         secondLightOff = findViewById(R.id.secondLightOff);
         thirdLightOff = findViewById(R.id.thirdLightOff);
         refreshLayout = findViewById(R.id.swipe);
+        testBtn = findViewById(R.id.testBtn);
     }
 
     private void refresh(int milliseconds) {
