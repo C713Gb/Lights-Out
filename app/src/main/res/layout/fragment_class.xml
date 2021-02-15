@@ -37,6 +37,7 @@
                 android:layout_marginEnd="20dp">
 
                 <LinearLayout
+                    android:id="@+id/manual_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/manual_background"
@@ -45,9 +46,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginBottom="10dp"
+                    android:clickable="true"
                     android:gravity="center">
 
                     <TextView
+                        android:id="@+id/manual_txt"
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Manual"
@@ -57,15 +61,20 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/auto_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/auto_background_not_selected"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center">
+
                     <TextView
+                        android:id="@+id/auto_txt"
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Auto"
@@ -100,6 +109,7 @@
                         android:src="@drawable/ic_fan"/>
 
                     <CheckBox
+                        android:id="@+id/fan1_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"/>
@@ -119,6 +129,7 @@
                         android:src="@drawable/ic_fan"/>
 
                     <CheckBox
+                        android:id="@+id/fan2_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"/>
@@ -148,6 +159,7 @@
                         android:src="@drawable/ic_idea"/>
 
                     <CheckBox
+                        android:id="@+id/light1_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"/>
@@ -167,6 +179,7 @@
                         android:src="@drawable/ic_idea"/>
 
                     <CheckBox
+                        android:id="@+id/light2_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"/>
@@ -196,6 +209,7 @@
                         android:src="@drawable/ic_fan"/>
 
                     <CheckBox
+                        android:id="@+id/fan3_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"/>
@@ -215,6 +229,7 @@
                         android:src="@drawable/ic_fan"/>
 
                     <CheckBox
+                        android:id="@+id/fan4_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"/>

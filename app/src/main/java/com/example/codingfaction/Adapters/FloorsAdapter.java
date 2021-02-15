@@ -34,12 +34,13 @@ public class FloorsAdapter extends RecyclerView.Adapter<FloorsAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FloorsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FloorsAdapter.ViewHolder holder, final int position) {
         classroomActivity = (ClassroomActivity) mContext;
         holder.text.setText(floorsList.get(position));
         holder.text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                classroomActivity.strFloor = floorsList.get(position);
                 classroomActivity.addFragment(new RoomsFragment(), false, "tag");
             }
         });
