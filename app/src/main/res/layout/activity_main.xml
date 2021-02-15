@@ -188,6 +188,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/test_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/completed"
@@ -199,6 +200,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Test"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/test_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/test_layout"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/testBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Classroom"/>
 
             </LinearLayout>
 
